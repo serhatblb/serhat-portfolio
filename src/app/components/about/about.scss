@@ -29,3 +29,52 @@
   color: var(--text-light);
 }
 :host-context(.dark) .tags span { background: var(--bg-dark); border-color: var(--border-dark); color: var(--text-dark); }
+
+/* INFINITE SLIDER */
+.tech-slider {
+  margin-top: 60px;
+  width: 100%;
+  overflow: hidden; /* Taşanı gizle */
+  position: relative;
+  
+  /* Kenarları hafif flu yap */
+  &::before, &::after {
+    content: ""; position: absolute; top: 0; width: 100px; height: 100%; z-index: 2;
+  }
+  &::before { left: 0; background: linear-gradient(to right, var(--bg-light), transparent); }
+  &::after { right: 0; background: linear-gradient(to left, var(--bg-light), transparent); }
+}
+
+:host-context(.dark) .tech-slider {
+  &::before { background: linear-gradient(to right, var(--bg-dark), transparent); }
+  &::after { background: linear-gradient(to left, var(--bg-dark), transparent); }
+}
+
+.slider-track {
+  display: flex;
+  gap: 40px;
+  width: max-content;
+  animation: scroll 20s linear infinite;
+}
+
+.slide {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-light);
+  opacity: 0.5;
+  white-space: nowrap;
+  transition: 0.3s;
+  cursor: default;
+  
+  &:hover {
+    color: var(--primary);
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+:host-context(.dark) .slide { color: var(--text-dark); }
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Yarısı kadar kaydır */
+}
