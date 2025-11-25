@@ -1,16 +1,29 @@
 <header class="hero">
+  <!-- Efektif Arka Plan -->
+  <div class="overlay"></div>
   <canvas #heroCanvas></canvas>
+
   <div class="hero-content">
-    <div class="badge">SEVİYE 2 OTOMASYON</div>
-    <h1>Serhat Bülbül</h1>
-    <p>{{ currentText }}<span class="cursor">|</span></p>
+    <div class="badge-container">
+      <span class="badge">SYSTEM: ONLINE</span>
+      <span class="badge outline">V2.0</span>
+    </div>
+    
+    <h1 class="glitch-effect" data-text="Serhat Bülbül">Serhat Bülbül</h1>
+    <p>{{ currentText }}<span class="cursor">_</span></p>
+    
     <div class="buttons">
-      <a href="#projects" class="btn">Projelerimi Gör</a>
-      <a href="assets/cv/serhat_cv.pdf" download class="btn outline">CV İndir</a>
+      <a href="#projects" class="btn primary">
+        <span class="btn-content">Projeleri Keşfet 🚀</span>
+      </a>
+      <a href="assets/cv/serhatcv.pdf" download class="btn secondary">
+        <span class="btn-content">CV İndir 📄</span>
+      </a>
     </div>
   </div>
+
   <div class="hero-img-wrap">
-    <!-- Profil resmini assets/images/profile.jpg yap -->
+    <div class="img-border"></div>
     <img src="assets/images/profile.jpg" alt="Profile" onerror="this.src='https://via.placeholder.com/300'">
   </div>
 </header>

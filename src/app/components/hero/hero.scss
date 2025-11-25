@@ -1,24 +1,193 @@
+/* Değişkenler (Theme Logic) */
+:root {
+  --hero-bg-light: radial-gradient(circle at center, #ffffff 0%, #e2e8f0 100%);
+  --hero-bg-dark: radial-gradient(circle at center, #1e293b 0%, #020617 100%);
+  
+  --text-gradient-light: linear-gradient(to right, #0f172a, #475569);
+  --text-gradient-dark: linear-gradient(to right, #ffffff, #94a3b8);
+}
+
 .hero {
-  position: relative; min-height: 90vh; display: flex; align-items: center; justify-content: space-between;
-  overflow: hidden; padding: 0 10%;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10%;
+  overflow: hidden;
+  transition: background 0.5s ease;
+
+  /* Varsayılan (Light Mode) */
+  background: var(--hero-bg-light);
+  color: var(--text-light);
 }
-canvas { position: absolute; top:0; left:0; width:100%; height:100%; z-index: -1; opacity: 0.6; }
 
-.hero-content { z-index: 1; max-width: 600px; animation: fadeInUp 1s ease; }
-h1 { font-size: 4rem; margin: 10px 0; font-weight: 800; }
-p { font-size: 1.5rem; font-family: 'JetBrains Mono', monospace; color: var(--primary); }
-.badge { display: inline-block; padding: 5px 15px; border: 1px solid var(--primary); border-radius: 20px; color: var(--primary); font-size: 0.8rem; font-weight: bold; }
+/* Dark Mode Tetikleyicisi */
+:host-context(.dark) .hero {
+  background: var(--hero-bg-dark);
+  color: white;
+}
 
+canvas {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%; z-index: 0;
+}
+
+/* Overlay: Light modda gerek yok, Dark modda hafif karartma */
+.overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: transparent; z-index: 1; pointer-events: none;
+}
+:host-context(.dark) .overlay {
+  background: linear-gradient(to right, rgba(2,6,23,0.8), rgba(2,6,23,0.4));
+}
+
+.hero-content {
+  position: relative; z-index: 2; max-width: 650px;
+  animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.badge-container { display: flex; gap: 10px; margin-bottom: 20px; }
+.badge {
+  font-size: 0.75rem; font-weight: 800; letter-spacing: 1px;
+  padding: 6px 12px; border-radius: 4px;
+  background: rgba(228, 138, 0, 0.1); color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 900; margin: 0; line-height: 1.1;
+  /* Metin Gradyanı (Light/Dark Uyumlu) */
+  background: var(--text-gradient-light);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+:host-context(.dark) h1 {
+  background: var(--text-gradient-dark);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+p {
+  font-size: 1.5rem; margin: 20px 0 40px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.buttons { display: flex; gap: 20px; }
+
+.btn {
+  text-decoration: none; padding: 16px 32px; border-radius: 8px;
+  font-weight: 700; transition: 0.3s; display: inline-flex; align-items: center; justify-content: center;
+}
+.btn.primary {
+  background: var(--primary); color: white;
+  box-shadow: 0 5px 15px rgba(228, 138, 0, 0.3);
+  &:hover { background: #ff9f1a; transform: translateY(-3px); }
+}
+.btn.secondary {
+  /* Light Mode Secondary Button */
+  background: white; color: var(--text-light); border: 1px solid var(--border-light);
+  &:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); }
+}
+:host-context(.dark) .btn.secondary {
+  /* Dark Mode Secondary Button */
+  background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1);
+  &:hover { border-color: white; background: rgba(255,255,255,0.1); }
+}
+
+/* Profil Resmi */
+.hero-img-wrap {
+  position: relative; z-index: 2; width: 320px; height: 320px;
+  display: flex; justify-content: center; align-items: center;
+}
+.img-border {
+  position: absolute; width: 100%; height: 100%;
+  border-radius: 30px; border: 2px solid var(--primary);
+  transform: rotate(-5deg); z-index: 0; transition: 0.5s;
+}
 .hero-img-wrap img {
-  width: 300px; height: 300px; object-fit: cover; border-radius: 20px;
-  box-shadow: 20px 20px 0 var(--primary); border: 2px solid var(--text-light);
-  transform: rotate(-3deg); transition: 0.3s;
-  &:hover { transform: rotate(0); box-shadow: 10px 10px 0 var(--primary); }
+  width: 100%; height: 100%; object-fit: cover; border-radius: 30px;
+  position: relative; z-index: 1; transform: rotate(0deg); transition: 0.5s;
+  /* Light modda gölge daha yumuşak */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+:host-context(.dark) .hero-img-wrap img {
+  border: 4px solid rgba(30, 41, 59, 0.8);
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 
-.btn { padding: 12px 30px; background: var(--primary); color: white; text-decoration: none; border-radius: 8px; font-weight: bold; margin-right: 15px; }
-.btn.outline { background: transparent; border: 2px solid var(--text-light); color: var(--text-light); }
-:host-context(.dark) .btn.outline { border-color: var(--text-dark); color: var(--text-dark); }
+.hero-img-wrap:hover .img-border { transform: rotate(0deg) scale(1.05); }
+.hero-img-wrap:hover img { transform: scale(1.02); }
 
-@keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-@media(max-width:768px) { .hero { flex-direction: column-reverse; text-align: center; padding-top: 100px; } .hero-img-wrap { margin-bottom: 30px; } }
+@keyframes slideUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+
+@media (max-width: 900px) {
+  .hero { flex-direction: column-reverse; justify-content: center; padding-top: 120px; text-align: center; }
+  .badge-container { justify-content: center; }
+  .buttons { justify-content: center; }
+  .hero-img-wrap { width: 250px; height: 250px; margin-bottom: 40px; }
+  h1 { font-size: 2.5rem; } /* Mobilde başlığı küçült */
+}
+
+/* ============================ */
+/* 📱 MOBİL GÖRÜNÜM (RESPONSIVE) */
+/* ============================ */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column-reverse; /* Resmi üste al, yazıyı alta */
+    justify-content: center;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    text-align: center;
+    height: auto; /* Mobilde min-height zorlamasın */
+  }
+
+  .badge-container {
+    justify-content: center;
+  }
+
+  /* Butonları mobilde esnek yap */
+  .buttons {
+    justify-content: center;
+    flex-wrap: wrap; /* Sığmazsa alt satıra geçsin */
+    gap: 15px; /* Araları biraz daralt */
+  }
+
+  .btn {
+    width: 100%; /* Çok küçük ekranda butonu tam genişlik yapabilirsin */
+    max-width: 200px; /* Ama çok da büyümesin */
+    padding: 14px 20px; /* Mobilde biraz daha kompakt */
+    font-size: 0.95rem;
+  }
+
+  .hero-img-wrap {
+    width: 220px;
+    height: 220px;
+    margin-bottom: 30px;
+  }
+
+  h1 {
+    font-size: 2.5rem; /* Başlığı küçült */
+  }
+  
+  p {
+    font-size: 1.1rem;
+    margin: 15px 0 30px;
+  }
+}
+
+/* Ekstra Küçük Ekranlar (iPhone 5/SE gibi) için */
+@media (max-width: 400px) {
+  .buttons {
+    flex-direction: column; /* Alt alta diz */
+    align-items: center;
+  }
+  .btn {
+    width: 100%; /* Tam genişlik */
+    max-width: 100%;
+  }
+}
