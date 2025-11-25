@@ -1,59 +1,91 @@
-# SerhatPortfolio
+# 🚀 Serhat Bülbül | Interactive Engineering Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
+> **Seviye 2 Otomasyon Mühendisi** ve **Fullstack Developer** vizyonuyla geliştirilmiş; modern, interaktif ve yüksek performanslı kişisel portfolyo web sitesi.
 
-## Development server
+![Angular](https://img.shields.io/badge/Angular-17+-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+![RxJS](https://img.shields.io/badge/RxJS-B7178C?style=for-the-badge&logo=reactivex&logoColor=white)
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
+## 🌟 Proje Hakkında
+
+Bu proje, standart bir statik web sitesi olmanın ötesinde, **Angular'ın Standalone Component** mimarisi kullanılarak geliştirilmiş bir Single Page Application (SPA) örneğidir.
+
+Endüstriyel otomasyon geçmişimden esinlenerek tasarlanan **"Cybernetic Network"** animasyonu, ziyaretçinin mouse hareketlerine duyarlı bir ağ yapısı sunar. Veri akışı, gerçek bir API simülasyonu yapan **Data Service** üzerinden yönetilmektedir.
+
+### 🎯 Temel Özellikler
+
+- ⚡ Angular 17+ Standalone Mimarisi  
+- 🕸️ İnteraktif Canvas Animasyonu  
+- 🌗 Dark/Light Mode  
+- 📱 Full Responsive Tasarım  
+- 💾 RxJS ile Mock Backend Yapısı  
+- 👀 Ziyaretçi Sayaç Simülasyonu  
+- 📧 Akıllı İletişim Formu  
+
+---
+
+## 🛠️ Kullanılan Teknolojiler
+
+| Alan | Teknoloji | Açıklama |
+|------|----------|----------|
+| **Framework** | Angular 17 | Standalone Components |
+| **Dil** | TypeScript | Tip güvenli yapı |
+| **Stil** | SCSS | Global theme & variables |
+| **Animasyon** | Canvas API | 2D fizik tabanlı ağ animasyonu |
+| **Veri Akışı** | RxJS | Observable yönetimi |
+
+---
+
+## 📂 Proje Mimarisi
+
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── hero/
+│   │   ├── projects/
+│   │   ├── navbar/
+│   ├── models/
+│   └── services/
+└── assets/
+    ├── images/
+    └── cv/
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🚀 Kurulum ve Çalıştırma
 
 ```bash
-ng generate component component-name
+git clone https://github.com/serhatblb/serhat-portfolio.git
+cd serhat-portfolio
+npm install
+ng serve -o
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 🎨 Görsel Detaylar
 
-## Building
+**Cybernetic Hero Effect:**  
+Fizik tabanlı, bağlantı mesafesine duyarlı, mouse etkileşimli bir parçacık ağı.
 
-To build the project run:
+**Data Service:**  
+Projeler HTML'e gömülü değil; tamamen servis tabanlıdır.
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 👤 İletişim
 
-## Running unit tests
+**Serhat Bülbül**  
+Seviye 2 Otomasyon Mühendisi & Fullstack Developer  
+📧 serhatbulbul.dev@example.com  
+💻 GitHub: @serhatblb  
+🔗 LinkedIn: Serhat Bülbül
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+---
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Developed with ❤️ using Angular & Engineering Precision.
