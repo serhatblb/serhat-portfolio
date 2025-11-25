@@ -1,80 +1,184 @@
-.about-container {
-  display: flex; gap: 50px; align-items: start;
+/* ======================== */
+/* 🍱 BENTO GRID LAYOUT */
+/* ======================== */
+.bento-grid {
+  display: grid;
+  /* Masaüstü: 4 Kolonlu Yapı */
+  grid-template-columns: repeat(4, 1fr); 
+  /* Satırlar içeriğe göre otomatik */
+  grid-auto-rows: minmax(180px, auto); 
+  gap: 20px;
+  margin-bottom: 60px;
 }
-@media (max-width: 900px) { .about-container { flex-direction: column; } }
 
-.bio { flex: 1; }
-.bio p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; color: var(--text-light); }
-:host-context(.dark) .bio p { color: var(--text-dark); }
-.bio strong { color: var(--primary); }
-
-.skills-grid { flex: 1; display: flex; flex-direction: column; gap: 20px; width: 100%; }
-
-.skill-card {
+/* KART GENEL STİLİ */
+.bento-card {
   background: var(--card-light);
   border: 1px solid var(--border-light);
-  padding: 20px; border-radius: 12px;
-  transition: 0.3s;
-  &:hover { border-color: var(--primary); transform: translateX(5px); }
+  border-radius: 20px;
+  padding: 25px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+  position: relative;
+  display: flex; flex-direction: column;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+  }
 }
-:host-context(.dark) .skill-card { background: var(--card-dark); border-color: var(--border-dark); }
+:host-context(.dark) .bento-card {
+  background: var(--card-dark);
+  border-color: var(--border-dark);
+  box-shadow: none;
+}
 
-.skill-card h3 { margin: 0 0 15px 0; color: var(--primary); font-size: 1.1rem; }
+/* --- KART ÖZEL KONUMLANDIRMALARI (Desktop) --- */
 
-.tags { display: flex; flex-wrap: wrap; gap: 10px; }
-.tags span {
-  font-size: 0.9rem; font-weight: 500;
-  padding: 5px 12px; border-radius: 6px;
+/* 1. BIO: Sol üst köşe, 2 birim genişlik, 2 birim yükseklik */
+.bio-card {
+  grid-column: span 2;
+  grid-row: span 2;
+  
+  .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+  .emoji { font-size: 1.8rem; background: rgba(228,138,0,0.1); padding: 8px; border-radius: 12px; }
+  h3 { margin: 0; color: var(--heading); font-size: 1.3rem; }
+  p { line-height: 1.6; color: var(--text-light); font-size: 1rem; }
+  :host-context(.dark) p { color: var(--text-dark); }
+  strong { color: var(--primary); }
+}
+
+/* 2. STACK: Bio'nun sağı, 1 birim genişlik, 2 birim yükseklik (Dikey Uzun) */
+.stack-card {
+  grid-column: span 1;
+  grid-row: span 2;
+  h3 { margin-top: 0; color: var(--heading); margin-bottom: 15px; }
+}
+.stack-list { display: flex; flex-direction: column; gap: 10px; height: 100%; justify-content: space-between; }
+.stack-item {
+  padding: 10px 15px; border-radius: 8px;
   background: var(--bg-light); border: 1px solid var(--border-light);
-  color: var(--text-light);
+  font-weight: 600; font-size: 0.9rem; cursor: default;
+  transition: 0.2s;
+  &:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateX(5px); }
 }
-:host-context(.dark) .tags span { background: var(--bg-dark); border-color: var(--border-dark); color: var(--text-dark); }
+:host-context(.dark) .stack-item { background: var(--bg-dark); border-color: var(--border-dark); }
 
-/* INFINITE SLIDER */
-.tech-slider {
+/* 3. LOCATION: En sağ üst, 1 birim kare */
+.location-card {
+  grid-column: span 1;
+  background: linear-gradient(135deg, var(--primary), #b76b00);
+  color: white; border: none;
+  justify-content: center; align-items: center; text-align: center;
+  
+  h3 { margin: 0 0 5px 0; font-size: 1.1rem; opacity: 0.9; }
+  p { font-size: 1.4rem; font-weight: 800; margin: 0; }
+  small { background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; margin-top: 10px; display: inline-block; }
+}
+
+/* 4. STATS: En sağ alt (Location'ın altı), 1 birim kare */
+.stats-card {
+  grid-column: span 1;
+  align-items: center; justify-content: center; text-align: center;
+  h3 { font-size: 3.5rem; margin: 0; color: var(--primary); line-height: 1; font-weight: 800; }
+  p { margin: 5px 0 0 0; font-weight: 600; opacity: 0.7; }
+}
+
+/* 5. INDUSTRIAL: En alt, Tam genişlik (4 birim) */
+.industrial-card {
+  grid-column: span 4; /* Tüm satırı kapla */
+  
+  h3 { margin-top: 0; color: var(--heading); margin-bottom: 15px; }
+  .tags { display: flex; gap: 12px; flex-wrap: wrap; }
+  span {
+    padding: 8px 16px; border-radius: 50px;
+    background: rgba(228,138,0,0.1); color: var(--primary);
+    border: 1px solid var(--primary); font-size: 0.95rem; font-weight: 600;
+    transition: 0.3s;
+    &:hover { background: var(--primary); color: white; }
+  }
+}
+
+/* ============================ */
+/* 📱 RESPONSIVE (Table & Mobile) */
+/* ============================ */
+
+/* Tablet (1024px altı) -> 2 Kolonlu Yapıya Geç */
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr); /* 4 yerine 2 kolon */
+  }
+  
+  .bio-card { grid-column: span 2; } /* Üstü kapla */
+  .stack-card { grid-column: span 1; grid-row: span 2; } /* Solda uzun dur */
+  .location-card { grid-column: span 1; }
+  .stats-card { grid-column: span 1; }
+  .industrial-card { grid-column: span 2; } /* Altı kapla */
+}
+
+/* Mobil (600px altı) -> Tek Kolon (Alt alta) */
+@media (max-width: 600px) {
+  .bento-grid {
+    display: flex; flex-direction: column; gap: 15px;
+  }
+  /* Grid özelliklerini sıfırla */
+  .bio-card, .stack-card, .location-card, .stats-card, .industrial-card {
+    grid-column: auto; grid-row: auto; min-height: auto;
+  }
+  
+  .stats-card h3 { font-size: 2.5rem; }
+  .stack-list { flex-direction: row; flex-wrap: wrap; } /* Mobilde stack yan yana olsun */
+  .stack-item { flex: 1 0 40%; text-align: center; }
+}
+
+
+/* ======================== */
+/* 🔄 INFINITE SLIDER */
+/* ======================== */
+.slider-container {
   margin-top: 60px;
   width: 100%;
-  overflow: hidden; /* Taşanı gizle */
+  overflow: hidden;
   position: relative;
-  
-  /* Kenarları hafif flu yap */
+  padding: 20px 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 0.02);
+
+  /* Kenarlara flu efekt */
   &::before, &::after {
-    content: ""; position: absolute; top: 0; width: 100px; height: 100%; z-index: 2;
+    content: ""; position: absolute; top: 0; width: 100px; height: 100%; z-index: 2; pointer-events: none;
   }
   &::before { left: 0; background: linear-gradient(to right, var(--bg-light), transparent); }
   &::after { right: 0; background: linear-gradient(to left, var(--bg-light), transparent); }
 }
 
-:host-context(.dark) .tech-slider {
+:host-context(.dark) .slider-container {
+  border-color: var(--border-dark);
   &::before { background: linear-gradient(to right, var(--bg-dark), transparent); }
   &::after { background: linear-gradient(to left, var(--bg-dark), transparent); }
 }
 
 .slider-track {
-  display: flex;
-  gap: 40px;
-  width: max-content;
-  animation: scroll 20s linear infinite;
+  display: flex; gap: 60px; width: max-content;
+  animation: scroll 30s linear infinite;
 }
 
-.slide {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-light);
-  opacity: 0.5;
-  white-space: nowrap;
-  transition: 0.3s;
-  cursor: default;
+.slide-item {
+  font-size: 1.1rem; font-weight: 700; color: var(--text-light); opacity: 0.5;
+  display: flex; align-items: center; gap: 10px; cursor: default; transition: 0.3s;
   
+  .icon { font-size: 1.4rem; filter: grayscale(100%); transition: 0.3s; }
+
   &:hover {
-    color: var(--primary);
-    opacity: 1;
-    transform: scale(1.1);
+    opacity: 1; color: var(--primary); transform: scale(1.1);
+    .icon { filter: grayscale(0%); }
   }
 }
-:host-context(.dark) .slide { color: var(--text-dark); }
+:host-context(.dark) .slide-item { color: var(--text-dark); }
 
 @keyframes scroll {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* Yarısı kadar kaydır */
+  100% { transform: translateX(-50%); }
 }

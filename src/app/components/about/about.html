@@ -1,83 +1,87 @@
 <section id="about">
-  <div class="about-container">
-    <!-- Sol Taraf: Biyografi -->
-    <div class="bio">
-      <h2 class="section-title">Hakkımda</h2>
+  <h2 class="section-title">Hakkımda & Yetenekler</h2>
+  
+  <!-- BENTO GRID -->
+  <div class="bento-grid">
+    
+    <!-- 1. KUTU: BİYOGRAFİ (Sol, Büyük Kare) -->
+    <div class="bento-card bio-card">
+      <div class="card-header">
+        <span class="emoji">👨‍💻</span>
+        <h3>Serhat Kimdir?</h3>
+      </div>
       <p>
-        Merhaba! Ben Serhat. Demir-çelik sektörünün devasa süreçlerini, modern yazılım mimarisiyle optimize eden bir 
-        <strong>Bilgisayar Mühendisiyim.</strong>
-      </p>
-      <p>
-        Ağır sanayide <strong>Seviye 2 Otomasyon</strong> ve <strong>MES (Üretim Yönetim Sistemleri)</strong> projelerinde aktif rol alıyorum. 
-        Sadece kod yazmıyor; sahadaki veriyi anlamlı içgörülere dönüştüren, verimlilik odaklı sistemler tasarlıyorum.
-      </p>
-      <p>
-        Karmaşık problemleri <strong>Java, Python ve Angular</strong> üçlüsüyle çözmeyi seviyorum.
+        Demir-çelik sektörünün sıcaklığını, kodların soğukkanlı mantığıyla birleştiren bir mühendisim. 
+        <br><br>
+        <strong>Seviye 2 Otomasyon</strong> ve <strong>MES</strong> sistemlerinde, veriyi sahadan alıp anlamlı içgörülere dönüştürüyorum. 
+        Karmaşık endüstriyel problemleri modern Web teknolojileriyle çözmeyi seviyorum.
       </p>
     </div>
 
-    <!-- Sağ Taraf: Yetenek Kartları -->
-    <div class="skills-grid">
+    <!-- 2. KUTU: CORE STACK (Orta, Dikey Uzun) -->
+    <div class="bento-card stack-card">
+      <h3>Core Stack</h3>
+      <div class="stack-list">
+        <div class="stack-item">☕ Java Spring</div>
+        <div class="stack-item">🅰️ Angular</div>
+        <div class="stack-item">🐍 Django</div>
+        <div class="stack-item">🟢 Node.js</div>
+        <div class="stack-item">🐘 PostgreSQL</div>
+      </div>
+    </div>
+
+    <!-- 3. KUTU: KONUM (Sağ Üst) -->
+    <div class="bento-card location-card">
+      <div class="content">
+        <h3>Konum</h3>
+        <p>📍 Türkiye</p>
+        <small>Remote / Hybrid</small>
+      </div>
+    </div>
+
+    <!-- 4. KUTU: DENEYİM (Sağ Alt) -->
+    <div class="bento-card stats-card">
+      <h3>3+</h3>
+      <p>Yıl Deneyim</p>
+    </div>
+
+    <!-- 5. KUTU: ENDÜSTRİYEL (En Alt, Tam Genişlik) -->
+    <div class="bento-card industrial-card">
+      <h3>🏭 Endüstriyel Yetkinlikler</h3>
+      <div class="tags">
+        <span>Seviye 2 Otomasyon</span>
+        <span>MES Sistemleri</span>
+        <span>SCADA / HMI</span>
+        <span>Veri Analizi</span>
+        <span>Endüstri 4.0</span>
+        <span>IoT Entegrasyonu</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- INFINITE TECH SLIDER (Sonsuz Kayan Şerit) -->
+  <div class="slider-container">
+    <div class="slider-track">
+      <!-- 1. GRUP -->
+      <div class="slide-item"><span class="icon">☕</span> Java Spring</div>
+      <div class="slide-item"><span class="icon">🅰️</span> Angular 17</div>
+      <div class="slide-item"><span class="icon">🏭</span> MES Systems</div>
+      <div class="slide-item"><span class="icon">🐍</span> Python</div>
+      <div class="slide-item"><span class="icon">🐘</span> PostgreSQL</div>
+      <div class="slide-item"><span class="icon">🟢</span> Node.js</div>
+      <div class="slide-item"><span class="icon">🧊</span> Three.js</div>
+      <div class="slide-item"><span class="icon">🐳</span> Docker</div>
       
-      <div class="skill-card">
-        <h3>🏭 Endüstriyel</h3>
-        <div class="tags">
-          <span>Seviye 2 Otomasyon</span>
-          <span>MES Sistemleri</span>
-          <span>Saha Veri Analizi</span>
-          <span>WinCC / SCADA</span>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <h3>💻 Backend & Veri</h3>
-        <div class="tags">
-          <span>Java Spring Boot</span>
-          <span>Python Django</span>
-          <span>Node.js</span>
-          <span>PostgreSQL / MSSQL</span>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <h3>🎨 Frontend & UI</h3>
-        <div class="tags">
-          <span>Angular 17+</span>
-          <span>Three.js (3D)</span>
-          <span>TypeScript</span>
-          <span>PrimeNG / SCSS</span>
-        </div>
-      </div>
-
+      <!-- 2. GRUP (Tekrar) -->
+      <div class="slide-item"><span class="icon">☕</span> Java Spring</div>
+      <div class="slide-item"><span class="icon">🅰️</span> Angular 17</div>
+      <div class="slide-item"><span class="icon">🏭</span> MES Systems</div>
+      <div class="slide-item"><span class="icon">🐍</span> Python</div>
+      <div class="slide-item"><span class="icon">🐘</span> PostgreSQL</div>
+      <div class="slide-item"><span class="icon">🟢</span> Node.js</div>
+      <div class="slide-item"><span class="icon">🧊</span> Three.js</div>
+      <div class="slide-item"><span class="icon">🐳</span> Docker</div>
     </div>
   </div>
 </section>
-
-<!-- INFINITE TECH SLIDER -->
-<div class="tech-slider">
-  <div class="slider-track">
-    <!-- Logolar (2 set halinde kopyala ki döngü pürüzsüz olsun) -->
-    <div class="slide">Angular</div>
-    <div class="slide">Java</div>
-    <div class="slide">Spring Boot</div>
-    <div class="slide">Python</div>
-    <div class="slide">Django</div>
-    <div class="slide">TypeScript</div>
-    <div class="slide">Node.js</div>
-    <div class="slide">PostgreSQL</div>
-    <div class="slide">Three.js</div>
-    <div class="slide">Docker</div>
-    
-    <!-- AYNI SETİ TEKRARLA (Kesintisiz döngü için) -->
-    <div class="slide">Angular</div>
-    <div class="slide">Java</div>
-    <div class="slide">Spring Boot</div>
-    <div class="slide">Python</div>
-    <div class="slide">Django</div>
-    <div class="slide">TypeScript</div>
-    <div class="slide">Node.js</div>
-    <div class="slide">PostgreSQL</div>
-    <div class="slide">Three.js</div>
-    <div class="slide">Docker</div>
-  </div>
-</div>
