@@ -1,0 +1,68 @@
+section { display: flex; justify-content: center; align-items: center; min-height: 60vh; }
+
+.contact-box {
+  text-align: center; max-width: 600px; width: 100%;
+  padding: 40px; border-radius: 20px;
+  background: linear-gradient(145deg, var(--card-light), var(--bg-light));
+  border: 1px solid var(--border-light);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+:host-context(.dark) .contact-box {
+  background: linear-gradient(145deg, var(--card-dark), var(--bg-dark));
+  border-color: var(--border-dark);
+  box-shadow: none;
+}
+
+.copy-btn {
+  background: var(--primary); color: white; border: none;
+  padding: 15px 30px; font-size: 1.1rem; font-weight: bold; border-radius: 50px;
+  cursor: pointer; transition: 0.3s; margin-top: 20px;
+  &:hover { transform: translateY(-3px); background: var(--primary-hover); }
+  &:active { transform: scale(0.95); }
+}
+
+.email-display { margin-top: 10px; font-family: monospace; opacity: 0.6; }
+
+.socials { margin-top: 30px; display: flex; justify-content: center; gap: 20px; }
+.social-link {
+  font-size: 1.1rem; text-decoration: none; color: inherit; font-weight: 600;
+  padding: 10px 20px; border: 2px solid var(--border-light); border-radius: 8px;
+  transition: 0.3s;
+  &:hover { border-color: var(--primary); color: var(--primary); }
+}
+:host-context(.dark) .social-link { border-color: var(--border-dark); }
+
+/* Mevcut kodların altına ekle */
+
+.mail-form {
+  width: 100%; margin-top: 20px; display: flex; flex-direction: column; gap: 15px;
+}
+
+.form-input {
+  width: 100%; padding: 12px; border-radius: 8px;
+  border: 1px solid var(--border-light); background: var(--bg-light);
+  color: var(--text-light); font-family: inherit; box-sizing: border-box;
+  &:focus { outline: none; border-color: var(--primary); }
+}
+:host-context(.dark) .form-input { 
+  background: var(--bg-dark); border-color: var(--border-dark); color: var(--text-dark); 
+}
+
+.send-btn {
+  background: var(--primary); color: white; border: none; padding: 12px;
+  border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s;
+  &:hover { background: var(--primary-hover); transform: translateY(-2px); }
+}
+
+.divider {
+  margin: 20px 0; position: relative; width: 100%; text-align: center;
+  &::before { content:''; position: absolute; left:0; top:50%; width:100%; height:1px; background: var(--border-light); z-index:0; }
+  span { background: var(--card-light); padding: 0 10px; position: relative; z-index: 1; font-size: 0.8rem; color: var(--text-light); }
+}
+:host-context(.dark) .divider span { background: #151e32; /* Kartın koyu rengi */ }
+
+.copy-btn.outline {
+  background: transparent; border: 1px solid var(--primary); color: var(--primary);
+  padding: 8px 20px; border-radius: 50px; cursor: pointer; font-size: 0.9rem;
+  &:hover { background: rgba(228, 138, 0, 0.1); }
+}

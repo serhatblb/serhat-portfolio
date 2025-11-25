@@ -1,0 +1,72 @@
+/* Masaüstü (Varsayılan) Stiller */
+.navbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 5%;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  position: sticky; top: 0; z-index: 1000;
+  border-bottom: 1px solid var(--border-light);
+  transition: 0.3s;
+}
+:host-context(.dark) .navbar { 
+  background: rgba(2,6,23,0.95); 
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.brand { font-size: 1.5rem; font-weight: 800; span { color: var(--primary); } }
+
+.nav-links { display: flex; gap: 25px; align-items: center; }
+.nav-links a { 
+  text-decoration: none; color: inherit; font-weight: 600; font-size: 0.95rem;
+  transition: 0.3s; position: relative;
+  &:hover { color: var(--primary); }
+}
+
+.theme-btn { 
+  background: none; border: 1px solid currentColor; border-radius: 50%; 
+  width: 35px; height: 35px; cursor: pointer; color: inherit; 
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Hamburger Butonu (Varsayılan olarak gizli) */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer;
+  span {
+    display: block; width: 25px; height: 3px; background-color: var(--text-light);
+    border-radius: 3px; transition: 0.3s;
+  }
+}
+:host-context(.dark) .hamburger span { background-color: var(--text-dark); }
+
+/* ============================ */
+/* 📱 MOBİL GÖRÜNÜM (Max 768px) */
+/* ============================ */
+@media (max-width: 768px) {
+  .navbar { padding: 1rem 20px; } /* Mobilde kenar boşluğunu azalt */
+  
+  .hamburger { display: flex; z-index: 1002; } /* Butonu göster */
+
+  /* Hamburger Animasyonu (X şeklini alır) */
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+  /* Menü Linkleri (Gizle ve Dropdown yap) */
+  .nav-links {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100vh; /* Tam ekran kapla */
+    background: var(--bg-light);
+    flex-direction: column; justify-content: center; align-items: center; gap: 30px;
+    transform: translateY(-100%); /* Yukarı sakla */
+    opacity: 0; transition: 0.4s ease-in-out;
+    z-index: 1001; /* Navbar'ın altında ama içeriğin üstünde */
+  }
+  :host-context(.dark) .nav-links { background: var(--bg-dark); }
+
+  /* Menü Açıldığında */
+  .nav-links.active {
+    transform: translateY(0); opacity: 1;
+  }
+
+  .nav-links a { font-size: 1.5rem; } /* Mobilde linkler büyük olsun */
+}

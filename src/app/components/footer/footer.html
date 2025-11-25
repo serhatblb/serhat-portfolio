@@ -1,0 +1,20 @@
+<footer>
+  <div class="footer-content">
+    
+    <!-- Ziyaretçi İstatistik Alanı -->
+    <div class="stats-container">
+      <div class="stat-item">
+        <span class="icon">📅</span>
+        <span class="text">Bugün: <strong>{{ dailyViews }}. ziyaretçisiniz</strong></span>
+      </div>
+      <div class="divider">|</div>
+      <div class="stat-item">
+        <span class="icon">👀</span>
+        <span class="text">Toplam Görüntülenme: <strong>{{ totalViews | number }}</strong></span>
+      </div>
+    </div>
+
+    <p class="copyright">© {{ year }} Serhat Bülbül.</p>
+    <p class="sub">Angular 17 & TypeScript ile geliştirildi 🚀</p>
+  </div>
+</footer>

@@ -1,0 +1,74 @@
+/* src/styles.scss */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+  --primary: #e48a00;
+  --primary-hover: #ff9f1a;
+  --bg-light: #F8FAFC;
+  --bg-dark: #020617;
+  --text-light: #334155;
+  --text-dark: #cbd5e1;
+  --card-light: #ffffff;
+  --card-dark: #0F172A;
+  --border-light: #e2e8f0;
+  --border-dark: #1e293b;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  transition: all 0.3s ease;
+}
+
+body.dark {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+section {
+  padding: 80px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h2.section-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  border-left: 5px solid var(--primary);
+  padding-left: 15px;
+  color: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+
+
+/* RESPONSIVE AYARLAR */
+@media (max-width: 768px) {
+  
+  /* Bölüm boşluklarını daralt */
+  section {
+    padding: 50px 20px; 
+  }
+
+  /* Başlıkları küçült */
+  h1 { font-size: 2.5rem !important; } /* Hero başlığı */
+  h2.section-title { font-size: 1.8rem; margin-bottom: 30px; }
+
+  /* Hero alanı düzeni */
+  .hero-content { text-align: center; }
+  .hero-img-wrap img { width: 200px; height: 200px; margin-top: 30px; }
+
+  /* Gridleri tek kolona düşür (Gerçi auto-fit bunu yapıyor ama garanti olsun) */
+  .grid { gap: 20px; }
+
+  /* Modal (Popup) mobilde tam ekran olsun */
+  .modal-content {
+    width: 95%; max-height: 85vh; padding: 20px;
+    overflow-y: auto; /* Kaydırma çubuğu çıksın */
+  }
+}

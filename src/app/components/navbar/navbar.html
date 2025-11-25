@@ -1,0 +1,22 @@
+<nav class="navbar">
+  <div class="brand">Serhat<span>Bülbül</span></div>
+  
+  <!-- Hamburger Butonu (Sadece Mobilde Görünür) -->
+  <button class="hamburger" (click)="toggleMenu()" [class.active]="isMenuOpen">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Menü Linkleri (Mobilde 'active' classı varsa görünür) -->
+  <div class="nav-links" [class.active]="isMenuOpen">
+    <a href="#about" (click)="closeMenu()">Hakkımda</a>
+    <a href="#experience" (click)="closeMenu()">Deneyim</a>
+    <a href="#projects" (click)="closeMenu()">Projeler</a>
+    <a href="#contact" (click)="closeMenu()">İletişim</a>
+    
+    <button class="theme-btn" (click)="toggleTheme()">
+      {{ isDark ? '☀️' : '🌙' }}
+    </button>
+  </div>
+</nav>
