@@ -1,0 +1,23 @@
+<section id="blog">
+  <h2 class="section-title">Blog</h2>
+  
+  <div class="blog-list">
+    <a href="#" class="blog-item" *ngFor="let post of posts">
+      
+      <!-- Tarih Kutusu -->
+      <div class="blog-date">
+        <span class="day">{{ post.date }}</span>
+        <span class="year">{{ post.year }}</span>
+      </div>
+
+      <!-- İçerik -->
+      <div class="blog-info">
+        <h3>{{ post.title }}</h3>
+        <span class="meta">⏱ {{ post.readTime }}</span>
+      </div>
+
+      <!-- Ok iconu -->
+      <div class="arrow-icon">➝</div>
+    </a>
+  </div>
+</section>
