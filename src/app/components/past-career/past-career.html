@@ -1,0 +1,27 @@
+<section id="past-career">
+  <h2 class="section-title">Geçmiş Deneyimlerim</h2>
+  <p class="intro-text">Yazılımdan önce, el becerisi ve hassasiyet gerektiren bir dünyadaydım.</p>
+
+  <div class="story-container">
+    <!-- index tek ise 'reverse' class'ı ekle, böylece biri sağda biri solda olur -->
+    <div class="story-row" *ngFor="let item of careerSteps; let i = index" [class.reverse]="i % 2 !== 0">
+      
+      <!-- Görsel Alanı -->
+      <div class="story-image">
+        <div class="img-wrap" [style.backgroundImage]="'url(' + item.image + ')'"></div>
+        <div class="corner-decoration"></div>
+      </div>
+
+      <!-- Yazı Alanı -->
+      <div class="story-content">
+        <span class="period">{{ item.period }}</span>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+        <div class="mini-tags">
+          <span *ngFor="let skill of item.skills">✦ {{ skill }}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
