@@ -11,6 +11,8 @@ import { Experience } from './components/experience/experience';
 import { Projects } from './components/projects/projects';
 import { Contact} from './components/contact/contact';
 import { Footer } from './components/footer/footer';
+import { PastCareer } from "./components/past-career/past-career";
+import { Blog } from "./components/blog/blog";
 
 @Component({
   selector: 'app-root',
@@ -23,8 +25,10 @@ import { Footer } from './components/footer/footer';
     Experience,
     Projects,
     Contact,
-    Footer
-  ],
+    Footer,
+    PastCareer,
+    Blog
+],
   templateUrl: './app.html',
   styleUrls: ['./app.scss']
 })
