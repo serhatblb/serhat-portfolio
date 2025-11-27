@@ -55,6 +55,23 @@ export class DataService {
     // Buraya eski işlerini ekleyebilirsin
   ];
 
+  private pastCareer = [
+    {
+      title: "Diş Protez Teknikerliği",
+      period: "2018 - 2020",
+      description: "Estetik ve fonksiyonun birleştiği nokta. Por...tım. Bu süreç bana sabrı ve detaylardaki mükemmelliği öğretti.",
+      skills: ["Hassas İşçilik", "Anatomi", "3D Düşünme"],
+      image: "assets/dental1.jpg" // Yoksa CSS'te gri kutu çıkacak
+    },
+    {
+      title: "Laboratuvar Yönetimi & Staj",
+      period: "2016 - 2018",
+      description: "Zaman yönetimi ve iş akışı takibi. Hasta ver...protezlerin zamanında teslimi için yoğun bir tempoda çalıştım.",
+      skills: ["Takım Çalışması", "Kriz Yönetimi"],
+      image: "assets/dental2.jpg"
+    }
+  ];
+
   constructor() { }
 
   // Verileri Sanki API'den çekiyormuşuz gibi Observable olarak döndürüyoruz
@@ -65,4 +82,9 @@ export class DataService {
   getExperiences(): Observable<Experience[]> {
     return of(this.experiences);
   }
+
+  getPastCareer() {
+    return of(this.pastCareer);
+}
+
 }
